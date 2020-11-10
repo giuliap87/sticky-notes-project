@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Board from "./Board";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Board />
+      <Footer />
     </div>
   );
 }
 
 export default App;
+
+//add msg for user when they delete note -- add pop up and change onDelete trigger item
+//add edit note option 
+//add features to addnote (bold, underline) 
+//implement drag and drop
+//add label or change color 
+//add folders???

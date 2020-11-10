@@ -1,0 +1,11 @@
+.Board {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3vh;
+}
+
+.Board-notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

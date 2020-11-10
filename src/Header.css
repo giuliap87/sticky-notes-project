@@ -1,0 +1,15 @@
+.Header {
+  background-color: rgb(235, 235, 106);
+  padding: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  color: rgb(48, 48, 48);
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 5px;
+}
+
+.Header-icon {
+    font-size: 30px;
+    padding-left: 10px;
+}
