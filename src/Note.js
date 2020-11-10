@@ -1,6 +1,6 @@
 import React from "react";
 import "./Note.css";
-import { FaTrash, FaEdit } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 
 function Note(props) {
 
