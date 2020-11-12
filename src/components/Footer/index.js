@@ -3,9 +3,9 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <div className="Footer">
+    <footer className="Footer">
       <p>Copyright ⓒ Giulia Piras {new Date().getFullYear()}</p>
-    </div>
+    </footer>
   );
 }
 

@@ -3,7 +3,11 @@ import "./Header.css";
 import { GiPin } from "react-icons/gi";
 
 function Header() {
-  return <h1 className="Header"><GiPin className="Header-icon"/> <span style={{fontSize: "30px"}}>Notes</span></h1>;
+  return (
+    <header className="Header">
+      <GiPin className="Header-icon" /> <h1>Notes</h1>
+    </header>
+  );
 }
 
 export default Header;
