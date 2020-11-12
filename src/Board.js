@@ -17,6 +17,7 @@ function Board() {
     setInputVals({
       title: "",
       content: "",
+      time: ""
     });
   }
 
@@ -41,6 +42,7 @@ function Board() {
         {notes.map((note, index) => (
           <Note
             id={index}
+            time={note.time}
             key={uuidv4()}
             title={note.title}
             content={note.content}

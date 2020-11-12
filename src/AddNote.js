@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import "./AddNote.css";
 import { IoIosAddCircle } from "react-icons/io";
 
+import {getDate} from "./utils";
+
 function AddNote(props) {
   const [inputVals, setInputVals] = useState({
     title: "",
     content: "",
+    time: ""
   });
 
   // set input values as state
@@ -16,6 +19,7 @@ function AddNote(props) {
       return {
         ...prevNote,
         [name]: value,
+        time: getDate(),
       };
     });
   }
