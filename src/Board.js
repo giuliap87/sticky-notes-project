@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 
 function Board() {
   const [notes, setNotes] = useState(
-    JSON.parse(window.localStorage.getItem("notes")) || []
+    ()=> JSON.parse(window.localStorage.getItem("notes")) || []
   );
 
   function addNote(inputVals, setInputVals) {
