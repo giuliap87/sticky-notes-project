@@ -15,6 +15,10 @@
   border-bottom: 0.5px solid rgb(48, 48, 48);
 }
 
+.AddNote-textarea{
+  resize: vertical;
+}
+
 .AddNote-input-title,
 .AddNote-textarea {
   padding: 15px 0;
@@ -26,6 +30,12 @@
 
 .AddNote-content {
   text-align: left;
+}
+
+.AddNote-add-btn{
+  background-color: transparent;
+  border: none;
+  outline: transparent;
 }
 
 .AddNote-add-icon {

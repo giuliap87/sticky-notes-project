@@ -53,13 +53,13 @@ function AddNote({ addNote, setError }) {
         />
       </div>
       <textarea
-        onChange={handleChange}
         className="AddNote-textarea"
+        onChange={handleChange}
         placeholder="Content..."
         name="content"
         value={content}
       />
-      <button onClick={submitNote}>
+      <button  className="AddNote-add-btn" onClick={submitNote}>
         <IoIosAddCircle className="AddNote-add-icon" />
       </button>
     </div>
