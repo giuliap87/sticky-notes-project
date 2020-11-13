@@ -6,7 +6,7 @@ import "./Board.css";
 function Board() {
   const [error, setError] = useState("");
   const [notes, setNotes] = useState(
-    JSON.parse(window.localStorage.getItem("notes")) || []
+    () => JSON.parse(window.localStorage.getItem("notes")) || []
   );
 
   function addNote(inputVals) {
