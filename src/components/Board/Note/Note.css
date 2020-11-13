@@ -11,6 +11,12 @@
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
 
+.Note-timestamp{
+  color: rgb(131, 130, 130);
+  font-size: 10px;
+  text-align: left;
+}
+
 .Note-title-container {
   border-bottom: 0.5px solid rgb(48, 48, 48);
   width: 100%;

@@ -2,9 +2,10 @@ import React from "react";
 import "./Note.css";
 import { FaTrash } from "react-icons/fa";
 
-function Note({ onDelete, title, content, id }) {
+function Note({ onDelete, title, content, id, timestamp }) {
   return (
     <div className="Note">
+      <span className="Note-timestamp">{timestamp}</span>
       <div className="Note-title-container">
         <h3 className="Note-title">{title}</h3>
       </div>

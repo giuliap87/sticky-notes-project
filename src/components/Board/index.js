@@ -32,8 +32,9 @@ function Board() {
         <AddNote addNote={addNote} setError={setError} />
       </div>
       <div className="Board-notes-container">
-        {notes.map(({ title, content, id }) => (
+        {notes.map(({ title, content, id, timestamp }) => (
           <Note
+            timestamp={timestamp}
             key={id}
             id={id}
             title={title}
