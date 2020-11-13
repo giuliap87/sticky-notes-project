@@ -10,7 +10,7 @@ function Note({ onDelete, title, content, id }) {
       </div>
       <p className="Note-content">{content}</p>
 
-      <FaTrash className="Note-delete-icon" onClick={() => onDelete(id)} />
+      <button className="Note-delete-btn" onClick={() => onDelete(id)}><FaTrash className="Note-delete-icon"/></button>
     </div>
   );
 }
