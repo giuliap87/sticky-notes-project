@@ -1,29 +1,43 @@
 import React, { useState } from "react";
 import "./AddNote.css";
 import { IoIosAddCircle } from "react-icons/io";
+import { v4 as uuidv4 } from "uuid";
 
-function AddNote(props) {
-  const [inputVals, setInputVals] = useState({
+function AddNote({ addNote, setError }) {
+  const [newNote, setNewNote] = useState({
     title: "",
     content: "",
   });
+  const { title, content } = newNote;
 
   // set input values as state
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setInputVals((prevNote) => {
-      return {
-        ...prevNote,
-        [name]: value,
-      };
+
+    setNewNote((prevInputVals) => ({
+      ...prevInputVals,
+      [name]: value,
+    }));
+  }
+
+  function reset() {
+    setNewNote({
+      title: "",
+      content: "",
     });
+    setError("");
   }
 
   //submit note
 
   function submitNote() {
-    props.add(inputVals, setInputVals);
+    if (!title || !content) {
+      return setError("please add a title and content");
+    }
+
+    addNote({ ...newNote, id: uuidv4() });
+    reset();
   }
 
   return (
@@ -35,7 +49,7 @@ function AddNote(props) {
           type="text"
           placeholder="Title"
           name="title"
-          value={inputVals.title}
+          value={title}
         />
       </div>
       <textarea
@@ -43,9 +57,11 @@ function AddNote(props) {
         className="AddNote-textarea"
         placeholder="Content..."
         name="content"
-        value={inputVals.content}
+        value={content}
       />
-      <IoIosAddCircle className="AddNote-add-icon" onClick={submitNote} />
+      <button onClick={submitNote}>
+        <IoIosAddCircle className="AddNote-add-icon" />
+      </button>
     </div>
   );
 }

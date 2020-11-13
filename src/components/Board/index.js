@@ -1,22 +1,17 @@
 import React, { useState } from "react";
-import Note from "./Note";
-import AddNote from "./AddNote";
+import Note from "./Note/Note";
+import AddNote from "./AddNote/AddNote";
 import "./Board.css";
 
-import { v4 as uuidv4 } from "uuid";
-
 function Board() {
+  const [error, setError] = useState("");
   const [notes, setNotes] = useState(
     JSON.parse(window.localStorage.getItem("notes")) || []
   );
 
-  function addNote(inputVals, setInputVals) {
+  function addNote(inputVals) {
     setNotes((prevVal) => {
       return [...prevVal, inputVals];
-    });
-    setInputVals({
-      title: "",
-      content: "",
     });
   }
 
@@ -25,26 +20,25 @@ function Board() {
   }, [notes]);
 
   function deleteNote(id) {
-    setNotes((prevVal) => {
-      return prevVal.filter((item, index) => {
-        return index !== id;
-      });
-    });
+    setNotes((prevNotes) =>
+      prevNotes.filter(({ id: noteId }) => noteId !== id)
+    );
   }
 
   return (
     <div className="Board">
+      {error && <div>{error}</div>}
       <div>
-        <AddNote add={addNote} />
+        <AddNote addNote={addNote} setError={setError} />
       </div>
       <div className="Board-notes-container">
-        {notes.map((note, index) => (
+        {notes.map(({ title, content, id }) => (
           <Note
-            id={index}
-            key={uuidv4()}
-            title={note.title}
-            content={note.content}
-            click={deleteNote}
+            key={id}
+            id={id}
+            title={title}
+            content={content}
+            onDelete={deleteNote}
           />
         ))}
       </div>
