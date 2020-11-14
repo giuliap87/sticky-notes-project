@@ -34,7 +34,7 @@ function AddNote({ addNote, setError }) {
 
   function submitNote() {
     if (!title || !content) {
-      return setError("please add a title and content");
+      return setError("Please add a title and content");
     }
 
     addNote({ ...newNote, id: uuidv4(), timestamp: format(new Date(), "do MMM yyyy - HH:mm") });

@@ -9,3 +9,20 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.Board-fillnote-error-msg {
+  border: .5px solid rgb(212, 212, 212);
+  border-radius: 3px;
+  width: fit-content;
+  padding: 8px;
+  color: rgb(255, 255, 255);
+  font-size: 13px;
+  background-color: rgb(226, 169, 84);
+  margin: 20px auto;
+
+  display: flex;
+}
+
+.Board-fillnote-error-icon{
+  padding: 1px 2px 1px 1px;
+}
