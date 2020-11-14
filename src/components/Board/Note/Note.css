@@ -32,23 +32,28 @@
   text-align: left;
 }
 
-.Note-delete-icon {
+.Note-delete-btn {
+  background-color: transparent;
+  border: none;
+  outline: transparent;
+  width: 30px;
   position: absolute;
   bottom: 10px;
-  font-size: 18px;
-  transition: all 0.5s ease;
-
-  color: rgb(151, 42, 42);
-  bottom: 10px;
   right: 10px;
+  transition: transform 0.5s ease;
+}
+
+.Note-delete-icon {
   font-size: 17px;
+  transition: all 0.5s ease;
+  color: rgb(151, 42, 42);
 }
 
-.Note-delete-icon:hover{
-  transform: scale(1.1);
+.Note-delete-btn:focus,
+.Note-delete-btn:hover {
+  transform: scale(1.2);
 }
 
-.Note-delete-icon:active {
+.Note-delete-btn:active {
   transform: scale(0.9);
 }
-
