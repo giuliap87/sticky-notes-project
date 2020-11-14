@@ -1,6 +1,7 @@
 .Note {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   padding: 20px;
   margin: 20px;
@@ -30,21 +31,23 @@
   border: none;
   outline: transparent;
   width: 30px;
-  margin: 0 10% 0 90%;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   transition: transform 0.5s ease;
-}
-
-.Note-delete-btn:focus,
-.Note-delete-btn:hover {
-  transform: scale(1.20);
-}
-
-.Note-delete-btn:active {
-  transform: scale(0.9);
 }
 
 .Note-delete-icon {
   font-size: 17px;
   transition: all 0.5s ease;
   color: rgb(151, 42, 42);
+}
+
+.Note-delete-btn:focus,
+.Note-delete-btn:hover {
+  transform: scale(1.2);
+}
+
+.Note-delete-btn:active {
+  transform: scale(0.9);
 }
