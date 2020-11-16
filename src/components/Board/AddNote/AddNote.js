@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./AddNote.css";
 import { IoIosAddCircle } from "react-icons/io";
 import { v4 as uuidv4 } from "uuid";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 function AddNote({ addNote, setError }) {
   const [newNote, setNewNote] = useState({
@@ -37,7 +37,7 @@ function AddNote({ addNote, setError }) {
       return setError("Please add a title and content");
     }
 
-    addNote({ ...newNote, id: uuidv4(), timestamp: format(new Date(), "do MMM yyyy - HH:mm") });
+    addNote({ ...newNote, id: uuidv4(), timestamp: format(new Date(), "dd MMM yyyy - HH:mm") });
     reset();
   }
 
