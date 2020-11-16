@@ -4,7 +4,11 @@ import { IoIosAddCircle } from "react-icons/io";
 import { v4 as uuidv4 } from "uuid";
 import { format } from 'date-fns';
 
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 function AddNote({ addNote, setError }) {
+  const [text, setText] = useState("");
   const [newNote, setNewNote] = useState({
     title: "",
     content: "",
@@ -37,12 +41,24 @@ function AddNote({ addNote, setError }) {
       return setError("Please add a title and content");
     }
 
-    addNote({ ...newNote, id: uuidv4(), timestamp: format(new Date(), "do MMM yyyy - HH:mm") });
+    addNote({
+      ...newNote,
+      id: uuidv4(),
+      timestamp: format(new Date(), "do MMM yyyy - HH:mm"),
+    });
     reset();
   }
 
   return (
     <div className="AddNote">
+      <CKEditor
+        editor={ClassicEditor}
+        data={text}
+        onChange={(event, editor) => {
+          const data = editor.getData();
+          setText(data);
+        }}
+      />
       <div className="AddNote-title-container">
         <input
           onChange={handleChange}
