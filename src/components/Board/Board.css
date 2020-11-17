@@ -1,7 +1,6 @@
 .Board {
   display: flex;
   flex-direction: column;
-  padding-bottom: 3vh;
 }
 
 .Board-notes-container {
