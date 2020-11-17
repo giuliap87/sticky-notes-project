@@ -50,7 +50,7 @@
 }
 
 .Note-delete-btn:focus {
-  border: 2px solid rgb(48, 48, 48);
+  outline: 2px solid rgb(48, 48, 48);
   height: 30px; 
   width: 30px;
   padding-top: 1px;
