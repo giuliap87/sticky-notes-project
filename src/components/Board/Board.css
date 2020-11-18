@@ -1,12 +1,14 @@
 .Board {
   display: flex;
   flex-direction: column;
+  min-height: calc(100vh - 60px); /* heade + footer */
 }
 
 .Board-notes-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 20px;
 }
 
 .Board-fillnote-error-msg {

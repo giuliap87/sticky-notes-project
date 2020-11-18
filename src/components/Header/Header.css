@@ -1,7 +1,8 @@
 .Header {
+
+  height: 40px;
   display: flex;
   align-items: center;
-  height: 9vh;
   background-color: rgb(235, 235, 106);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
