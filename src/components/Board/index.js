@@ -3,6 +3,8 @@ import Note from "./Note/Note";
 import AddNote from "./AddNote/AddNote";
 import "./Board.css";
 
+import { BiErrorCircle } from "react-icons/bi";
+
 function Board() {
   const [error, setError] = useState("");
   const [notes, setNotes] = useState(
@@ -27,13 +29,14 @@ function Board() {
 
   return (
     <div className="Board">
-      {error && <div>{error}</div>}
+      {error && <div className="Board-fillnote-error-msg"><BiErrorCircle className="Board-fillnote-error-icon"/>{error}</div>}
       <div>
         <AddNote addNote={addNote} setError={setError} />
       </div>
       <div className="Board-notes-container">
-        {notes.map(({ title, content, id }) => (
+        {notes.map(({ title, content, id, timestamp }) => (
           <Note
+            timestamp={timestamp}
             key={id}
             id={id}
             title={title}
