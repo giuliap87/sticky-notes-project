@@ -45,11 +45,11 @@
   font-size: 23px;
 }
 
-.AddNote-add-btn:focus{
-  border: 2px solid rgb(48, 48, 48);
-  height: 30px; 
+.AddNote-add-btn:focus {
+  outline: 2px solid rgb(48, 48, 48);
+  height: 30px;
   width: 30px;
-  padding-top: 1px;
+  padding-top: 3px;
 }
 
 .AddNote-add-btn:focus,
