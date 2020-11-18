@@ -2,44 +2,49 @@ import React, { useState } from "react";
 import "./AddNote.css";
 import { IoIosAddCircle } from "react-icons/io";
 import { v4 as uuidv4 } from "uuid";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import "./CKeditor.css";
 
 function AddNote({ addNote, setError }) {
-  const [text, setText] = useState("");
+  const [content, setContent] = useState("");
 
   function reset() {
-    setText("");
+    setContent("");
     setError("");
   }
 
   //submit note
 
   function submitNote() {
-    if (!text) {
+    if (!content) {
       return setError("Please add some content");
     }
 
     addNote({
       id: uuidv4(),
       timestamp: format(new Date(), "do MMM yyyy - HH:mm"),
-      text
+      content,
     });
     reset();
   }
 
   return (
     <div className="AddNote">
-      <CKEditor
-        editor={ClassicEditor}
-        data={text}
-        onChange={(event, editor) => {
-          const data = editor.getData();
-          setText(data);
-        }}
-      />
+        <CKEditor
+          editor={ClassicEditor}
+          config={{         
+          toolbar: ['heading', '|', 'bold', 'italic', 'link', 'numberedList', 'bulletedList', 
+             '|', 'undo', 'redo']
+        }}  
+          data={content}
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            setContent(data);
+          }}
+        />
       <button className="AddNote-add-btn" onClick={submitNote}>
         <IoIosAddCircle className="AddNote-add-icon" />
       </button>

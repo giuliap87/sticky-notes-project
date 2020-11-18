@@ -4,11 +4,13 @@ import { FaTrash } from "react-icons/fa";
 
 import parse from "html-react-parser";
 
-function Note({ onDelete, id, timestamp, text }) {
+function Note({ onDelete, id, timestamp, content }) {
   return (
     <div className="Note">
       <span className="Note-timestamp">{timestamp}</span>
-      <p className="Note-content">{parse(text)}</p>
+      <div>
+      <div className="Note-content">{parse(content)}</div>
+      </div>
       <button className="Note-delete-btn" onClick={() => onDelete(id)}>
         <FaTrash className="Note-delete-icon" />
       </button>
@@ -17,3 +19,4 @@ function Note({ onDelete, id, timestamp, text }) {
 }
 
 export default Note;
+
