@@ -46,10 +46,13 @@
 }
 
 .AddNote-add-btn:focus {
-  outline: 2px solid rgb(48, 48, 48);
   height: 30px;
   width: 30px;
   padding-top: 3px;
+}
+
+.AddNote-add-btn:focus-visible{
+  outline: 1px solid rgb(48, 48, 48);
 }
 
 .AddNote-add-btn:focus,
