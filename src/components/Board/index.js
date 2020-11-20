@@ -11,20 +11,30 @@ function Board() {
     () => JSON.parse(window.localStorage.getItem("notes")) || []
   );
 
+  React.useEffect(() => {
+    window.localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
   function addNote(inputVals) {
     setNotes((prevVal) => {
       return [...prevVal, inputVals];
     });
   }
 
-  React.useEffect(() => {
-    window.localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
-
   function deleteNote(id) {
     setNotes((prevNotes) =>
       prevNotes.filter(({ id: noteId }) => noteId !== id)
     );
+  }
+
+  function updateNote(id, updatedNote) {
+    const newNotes = notes.map((note) => {
+      if (note.id === id && updatedNote !== "" ) {
+        return { ...note, content: updatedNote };
+      }
+      return note;
+    });
+    setNotes(newNotes);
   }
 
   return (
@@ -40,6 +50,7 @@ function Board() {
             key={id}
             id={id}
             onDelete={deleteNote}
+            onUpdate={updateNote}
             content={content}
           />
         ))}

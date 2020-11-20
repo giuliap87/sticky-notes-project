@@ -5,7 +5,7 @@
 
   padding: 20px;
   margin: 20px;
-  width: 200px;
+  width: 250px;
   border-radius: 5px;
   background-color: rgb(235, 235, 106);
   box-shadow: 0 1px 5px rgb(138, 137, 137);
@@ -21,41 +21,112 @@
   padding: 15px;
   color: rgb(48, 48, 48);
   text-align: left;
+  word-wrap: break-word;
 }
 
-
-.Note-delete-btn {
-  background-color: transparent;
-  border: none;
+.Note-delete-btn,
+.Note-edit-btn,
+.Note-saveedit-btn {
   outline: transparent;
-  width: 30px;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.Note-delete-btn,
+.Note-edit-btn {
   position: absolute;
   bottom: 10px;
+  background-color: transparent;
+  border: none;
+  width: 30px;
+}
+
+.Note-delete-btn {
   right: 10px;
-  transition: transform 0.5s ease;
+  color: rgb(207, 53, 53);
+}
+
+.Note-edit-btn {
+  right: 40px;
+  color: rgb(47, 161, 255);
+}
+
+.Note-saveedit-btn {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 5px;
+  color: rgb(47, 161, 255);
+
+  transition: all 0.5s ease;
+}
+
+.Note-delete-icon,
+.Note-edit-icon {
+  transition: all 0.5s ease;
 }
 
 .Note-delete-icon {
   font-size: 17px;
-  transition: all 0.5s ease;
-  color: rgb(151, 42, 42);
 }
 
-.Note-delete-btn:focus {
+.Note-edit-icon {
+  font-size: 18px;
+}
+
+.Note-saveedit-icon {
+  font-size: 20px;
+}
+
+.Note-delete-btn:focus,
+.Note-edit-btn:focus {
   height: 30px;
   width: 30px;
   padding-top: 3px;
 }
 
+.Note-delete-btn:focus-visible, .Note-edit-btn:focus-visible {
+  border-radius: 2px;
+  color: #fff;
+}
+
+.Note-edit-btn:focus-visible{
+  background-color: rgb(47, 161, 255);
+}
+
 .Note-delete-btn:focus-visible{
-  outline: 1px solid rgb(48, 48, 48);
+  background-color: rgb(207, 53, 53);
+}
+
+.Note-saveedit-btn:focus-visible,
+.Note-saveedit-btn:focus,
+.Note-saveedit-btn:hover {
+  box-shadow: inset 0 0 0 2em rgb(47, 161, 255);
+  color: #fff;
+  border: 1px solid #fff;
+  border-top: none;
+}
+
+.Note-saveedit-btn:active {
+  transform: scale(0.9);
 }
 
 .Note-delete-btn:focus,
-.Note-delete-btn:hover {
+.Note-delete-btn:hover,
+.Note-edit-btn:focus,
+.Note-edit-btn:hover {
   transform: scale(1.2);
 }
 
-.Note-delete-btn:active {
+.Note-delete-btn:active,
+.Note-edit-btn:active {
   transform: scale(0.9);
+}
+
+.Note-editor {
+  margin: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  max-width: 400px;
 }
