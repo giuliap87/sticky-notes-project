@@ -23,13 +23,13 @@ function AddNote({ addNote, setError }) {
       return setError("Please add some content");
     }
 
+
     addNote({
       id: uuidv4(),
       timestamp: format(new Date(), "do MMM yyyy - HH:mm"),
       content,
     });
-    reset();
-  }
+
 
   return (
     <div className="AddNote">

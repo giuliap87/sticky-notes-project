@@ -1,15 +1,18 @@
 .Board {
   display: flex;
   flex-direction: column;
+  min-height: calc(100vh - 60px); /* heade + footer */
 }
 
 .Board-notes-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 20px;
 }
 
 .Board-fillnote-error-msg {
+  display: flex;
   border: .5px solid rgb(212, 212, 212);
   border-radius: 3px;
   width: fit-content;
@@ -18,8 +21,6 @@
   font-size: 13px;
   background-color: rgb(226, 169, 84);
   margin: 20px auto;
-
-  display: flex;
 }
 
 .Board-fillnote-error-icon{
