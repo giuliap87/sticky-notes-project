@@ -30,7 +30,9 @@ function AddNote({ addNote, setError }) {
       content,
     });
 
+    reset()
 
+  }
   return (
     <div className="AddNote">
         <CKEditor
