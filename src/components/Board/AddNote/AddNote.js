@@ -4,62 +4,47 @@ import { IoIosAddCircle } from "react-icons/io";
 import { v4 as uuidv4 } from "uuid";
 import { format } from "date-fns";
 
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import "./CKeditor.css";
+
 function AddNote({ addNote, setError }) {
-  const [newNote, setNewNote] = useState({
-    title: "",
-    content: "",
-  });
-  const { title, content } = newNote;
-
-  // set input values as state
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-
-    setNewNote((prevInputVals) => ({
-      ...prevInputVals,
-      [name]: value,
-    }));
-  }
+  const [content, setContent] = useState("");
 
   function reset() {
-    setNewNote({
-      title: "",
-      content: "",
-    });
+    setContent("");
     setError("");
   }
 
   //submit note
 
   function submitNote() {
-    if (!title || !content) {
-      return setError("Please add a title and content");
+    if (!content) {
+      return setError("Please add some content");
     }
 
-    addNote({ ...newNote, id: uuidv4(), timestamp: format(new Date(), "dd MMM yyyy - HH:mm") });
-    reset();
-  }
+
+    addNote({
+      id: uuidv4(),
+      timestamp: format(new Date(), "do MMM yyyy - HH:mm"),
+      content,
+    });
+
 
   return (
     <div className="AddNote">
-      <div className="AddNote-title-container">
-        <input
-          onChange={handleChange}
-          className="AddNote-input-title"
-          type="text"
-          placeholder="Title"
-          name="title"
-          value={title}
+        <CKEditor
+          editor={ClassicEditor}
+          config={{         
+          toolbar: ['heading', '|', 'bold', 'italic', 'link', 'numberedList', 'bulletedList', 
+             '|', 'undo', 'redo']
+        }}  
+          data={content}
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            setContent(data);
+          }}
         />
-      </div>
-      <textarea
-        className="AddNote-textarea"
-        onChange={handleChange}
-        placeholder="Content..."
-        name="content"
-        value={content}
-      />
       <button className="AddNote-add-btn" onClick={submitNote}>
         <IoIosAddCircle className="AddNote-add-icon" />
       </button>

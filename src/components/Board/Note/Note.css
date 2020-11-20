@@ -17,20 +17,12 @@
   text-align: left;
 }
 
-.Note-title-container {
-  border-bottom: 0.5px solid rgb(48, 48, 48);
-  width: 100%;
-}
-
-.Note-title,
 .Note-content {
   padding: 15px;
   color: rgb(48, 48, 48);
-}
-
-.Note-content {
   text-align: left;
 }
+
 
 .Note-delete-btn {
   background-color: transparent;
