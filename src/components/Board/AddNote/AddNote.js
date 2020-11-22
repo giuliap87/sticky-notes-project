@@ -26,7 +26,7 @@ function AddNote({ addNote, setError }) {
 
     addNote({
       id: uuidv4(),
-      timestamp: format(new Date(), "do MMM yyyy - HH:mm"),
+      timestamp: format(new Date(), "dd MMM yyyy - HH:mm"),
       content,
     });
 
