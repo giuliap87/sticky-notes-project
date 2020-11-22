@@ -1,9 +1,9 @@
 :root {
-  --ck-color-focus-border: green;
+  --ck-color-focus-border: #ccc;
   --ck-padding-left: 20px;
 }
 
 .ck.ck-editor__editable_inline{
-  padding: 0 20px ;
+  padding: 0 30px ;
 }
 
