@@ -29,7 +29,7 @@ function Board() {
 
   function updateNote(id, updatedNote) {
     const newNotes = notes.map((note) => {
-      if (note.id === id && updatedNote !== "" ) {
+      if (note.id === id && updatedNote) {
         return { ...note, content: updatedNote };
       }
       return note;
