@@ -23,30 +23,39 @@ function AddNote({ addNote, setError }) {
       return setError("Please add some content");
     }
 
-
     addNote({
       id: uuidv4(),
-      timestamp: format(new Date(), "dd MMM yyyy - HH:mm"),
+      timestamp: format(new Date(), "yyyyddMMHHmmss"),
       content,
     });
-
-    reset()
-
+    reset();
   }
   return (
     <div className="AddNote">
+      <div id="editor">
         <CKEditor
           editor={ClassicEditor}
-          config={{         
-          toolbar: ['heading', '|', 'bold', 'italic', 'link', 'numberedList', 'bulletedList', 
-             '|', 'undo', 'redo']
-        }}  
+          config={{
+            toolbar: [
+              "heading",
+              "|",
+              "bold",
+              "italic",
+              "link",
+              "numberedList",
+              "bulletedList",
+              "|",
+              "undo",
+              "redo",
+            ],
+          }}
           data={content}
           onChange={(event, editor) => {
             const data = editor.getData();
             setContent(data);
           }}
         />
+      </div>
       <button className="AddNote-add-btn" onClick={submitNote}>
         <IoIosAddCircle className="AddNote-add-icon" />
       </button>

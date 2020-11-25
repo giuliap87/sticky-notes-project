@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Note from "./Note/Note";
 import AddNote from "./AddNote/AddNote";
+import Select from "./Select/Select";
 import "./Board.css";
 
 import { BiErrorCircle } from "react-icons/bi";
@@ -16,9 +17,27 @@ function Board() {
   }, [notes]);
 
   function addNote(inputVals) {
-    setNotes((prevVal) => {
-      return [...prevVal, inputVals];
-    });
+    if (window.localStorage.getItem("option") === "old-to-new") {
+      setNotes((prevVal) => {
+        return [...prevVal, inputVals];
+      });
+    } else if (window.localStorage.getItem("option") === "new-to-old") {
+      setNotes((prevVal) => {
+        return [inputVals, ...prevVal];
+      });
+    }
+  }
+
+  function sortByDate(option) {
+    if (option === "new-to-old") {
+      const newNotes = [...notes];
+      const n = newNotes.sort((a, b) => b.timestamp - a.timestamp);
+      setNotes(n);
+    } else if (option === "old-to-new") {
+      const newNotes = [...notes];
+      const n = newNotes.sort((a, b) => a.timestamp - b.timestamp);
+      setNotes(n);
+    }
   }
 
   function deleteNote(id) {
@@ -39,7 +58,13 @@ function Board() {
 
   return (
     <div className="Board">
-      {error && <div className="Board-fillnote-error-msg"><BiErrorCircle className="Board-fillnote-error-icon"/>{error}</div>}
+      <Select sortByDate={sortByDate} />
+      {error && (
+        <div className="Board-fillnote-error-msg">
+          <BiErrorCircle className="Board-fillnote-error-icon" />
+          {error}
+        </div>
+      )}
       <div>
         <AddNote addNote={addNote} setError={setError} />
       </div>

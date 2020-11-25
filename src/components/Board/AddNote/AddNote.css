@@ -59,3 +59,10 @@
 .AddNote-add-btn:active {
   transform: scale(0.9);
 }
+
+@media only screen and (max-width: 600px) {
+  .AddNote{
+    width: 200px;
+  }
+}
+

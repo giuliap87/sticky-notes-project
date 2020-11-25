@@ -8,6 +8,8 @@ import "../AddNote/CKeditor.css";
 
 import parse from "html-react-parser";
 
+import {formatDate} from "../../../utils";
+
 function Note({ onDelete, onUpdate, id, timestamp, content }) {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedNote, setUpdatedNote] = useState(content);
@@ -52,7 +54,7 @@ function Note({ onDelete, onUpdate, id, timestamp, content }) {
   } else {
     return (
       <div className="Note">
-        <span className="Note-timestamp">{timestamp}</span>
+        <span className="Note-timestamp">{formatDate(timestamp)}</span>
         <div className="Note-content">{parse(content)}</div>
         <button className="Note-edit-btn" onClick={showEditor}>
           <FaEdit className="Note-edit-icon" />
