@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Note from "./Note/Note";
 import AddNote from "./AddNote/AddNote";
-import Select from "./Select/Select";
+import Select from "./Select/index";
 import "./Board.css";
 
 import { BiErrorCircle } from "react-icons/bi";
@@ -30,13 +30,11 @@ function Board() {
 
   function sortByDate(option) {
     if (option === "new-to-old") {
-      const newNotes = [...notes];
-      const n = newNotes.sort((a, b) => b.timestamp - a.timestamp);
-      setNotes(n);
+      const newNotes = [...notes].sort((a, b) => b.timestamp - a.timestamp);
+      setNotes(newNotes);
     } else if (option === "old-to-new") {
-      const newNotes = [...notes];
-      const n = newNotes.sort((a, b) => a.timestamp - b.timestamp);
-      setNotes(n);
+      const newNotes = [...notes].sort((a, b) => a.timestamp - b.timestamp);
+      setNotes(newNotes);
     }
   }
 

@@ -16,7 +16,7 @@
     font-family: inherit;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 576px) {
     .Select {
         position: relative;
         margin: 20px auto;
