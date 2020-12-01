@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./AddNote.css";
 import { IoIosAddCircle } from "react-icons/io";
 import { v4 as uuidv4 } from "uuid";
-import { format } from "date-fns";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -25,7 +24,7 @@ function AddNote({ addNote, setError }) {
 
     addNote({
       id: uuidv4(),
-      timestamp: format(new Date(), "yyyyddMMHHmmss"),
+      timestamp: new Date(),
       content,
     });
     reset();
