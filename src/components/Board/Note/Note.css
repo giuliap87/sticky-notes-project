@@ -130,3 +130,9 @@
   border-top-right-radius: 10px;
   max-width: 400px;
 }
+
+@media only screen and (max-width: 576px) {
+  .Note-editor{
+    width: 220px;
+  }
+}
