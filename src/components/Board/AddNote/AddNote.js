@@ -24,7 +24,7 @@ function AddNote({ addNote, setError }) {
 
     addNote({
       id: uuidv4(),
-      timestamp: new Date(),
+      timestamp: new Date().toISOString(),
       content,
     });
     reset();

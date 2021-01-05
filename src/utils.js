@@ -1,8 +1,15 @@
 import { format } from "date-fns";
-const DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+import { parseISO } from 'date-fns'
+const DATE_FORMAT = "yyy-MM-dd HH:mm:ss";
 
 function formatDate(string) {
-  return format(string, DATE_FORMAT);
+  return format(parseISO(string), DATE_FORMAT);
 }
 
-export { formatDate };
+
+function formatForSorting(string){
+  return format(parseISO(string), "yyyMMddHHmmSss" )
+}
+
+export { formatDate, formatForSorting };
+

@@ -5,6 +5,7 @@ import Select from "./Select/index";
 import "./Board.css";
 
 import { BiErrorCircle } from "react-icons/bi";
+import { formatForSorting } from "../../utils";
 
 function Board() {
   const [error, setError] = useState("");
@@ -30,10 +31,18 @@ function Board() {
 
   function sortByDate(option) {
     if (option === "new-to-old") {
-      const newNotes = [...notes].sort((a, b) => b.timestamp - a.timestamp);
+      const newNotes = [...notes].sort((a, b) => {
+        const timeA = a.timestamp;
+        const timeB = b.timestamp;
+        return formatForSorting(timeB) - formatForSorting(timeA);
+      });
       setNotes(newNotes);
     } else if (option === "old-to-new") {
-      const newNotes = [...notes].sort((a, b) => a.timestamp - b.timestamp);
+      const newNotes = [...notes].sort((a, b) => {
+        const timeA = a.timestamp;
+        const timeB = b.timestamp;
+        return formatForSorting(timeA) - formatForSorting(timeB);
+      });
       setNotes(newNotes);
     }
   }
