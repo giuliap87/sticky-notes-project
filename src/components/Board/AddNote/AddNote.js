@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "./AddNote.css";
 import { IoIosAddCircle } from "react-icons/io";
-import { v4 as uuidv4 } from "uuid";
+//import { v4 as uuidv4 } from "uuid";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -10,24 +11,27 @@ import "./CKeditor.css";
 function AddNote({ addNote, setError }) {
   const [content, setContent] = useState("");
 
-  function reset() {
-    setContent("");
-    setError("");
-  }
+  const dispatch = useDispatch();
+
+  // function reset() {
+  //   setContent("");
+  //   setError("");
+  // }
 
   //submit note
 
   function submitNote() {
-    if (!content) {
-      return setError("Please add some content");
-    }
+    // if (!content) {
+    //   return setError("Please add some content");
+    // }
 
-    addNote({
-      id: uuidv4(),
-      timestamp: new Date(),
-      content,
-    });
-    reset();
+    // addNote({
+    //   id: uuidv4(),
+    //   timestamp: new Date(),
+    //   content,
+    // });
+    // reset();
+    return () => dispatch({type: "ADD_TODO", content: content})
   }
   return (
     <div className="AddNote">
