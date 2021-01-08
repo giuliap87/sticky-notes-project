@@ -1,5 +1,3 @@
-let order = "new-to-old";
-
-export default function notesOrderReducer(state = order, action) {
-  return action.type === "CHANGE_ORDER" ? order = action.order : state;
+export default function notesOrderReducer(state = "new-to-old", action) {
+  return action.type === "CHANGE_ORDER" ? action.order : state;
 }
