@@ -1,2 +1,2 @@
-export const selectNotes = (state) => state.noteReducer.notes;
-export const selectOrder = (state) => state.notesOrderReducer.order;
+export const selectNotes = (state) => state.notes.notes;
+export const selectOrder = (state) => state.order;
