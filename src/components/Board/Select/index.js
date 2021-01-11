@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Select.css";
+import {useSelector, useDispatch} from "react-redux";
+import {selectOrder} from "../../../store/selectors";
+
 
 function Select({ sortByDate }) {
-  const [state, setState] = useState(
-    ()=> window.localStorage.getItem("option") || "old-to-new"
-  );
+
+  const option = useSelector(selectOrder);
+  const dispatch = useDispatch();
 
   function handleChange(e) {
     const val = e.target.value;
     sortByDate(val);
-    setState(val);
+    dispatch({type: "CHANGE_ORDER", order: val})
   }
-
-  useEffect(() => {
-    window.localStorage.setItem("option", state);
-  });
 
   return (
     <div className="Select">
       <label htmlFor="Select-input" className="Select-label">
         Sort by:
       </label>
-      <select value={state} onChange={handleChange} className="Select-input">
+      <select value={option} onChange={handleChange} className="Select-input">
         <option value="old-to-new">Older to newer</option>
         <option value="new-to-old">Newer to older</option>
       </select>

@@ -5,62 +5,29 @@ import Select from "./Select/index";
 import "./Board.css";
 
 import { BiErrorCircle } from "react-icons/bi";
-import { formatForSorting } from "../../utils";
+import { useSelector, useDispatch } from "react-redux";
+import { selectNotes, selectOrder } from "../../store/selectors";
 
 function Board() {
   const [error, setError] = useState("");
-  const [notes, setNotes] = useState(
-    () => JSON.parse(window.localStorage.getItem("notes")) || []
-  );
-
-  React.useEffect(() => {
-    window.localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+  const notes = useSelector(selectNotes);
+  const order = useSelector(selectOrder);
+  const dispatch = useDispatch();
 
   function addNote(inputVals) {
-    if (window.localStorage.getItem("option") === "old-to-new") {
-      setNotes((prevVal) => {
-        return [...prevVal, inputVals];
-      });
-    } else if (window.localStorage.getItem("option") === "new-to-old") {
-      setNotes((prevVal) => {
-        return [inputVals, ...prevVal];
-      });
-    }
+    dispatch({ type: "ADD_NOTE", content: inputVals, order: order });
   }
 
   function sortByDate(option) {
-    if (option === "new-to-old") {
-      const newNotes = [...notes].sort((a, b) => {
-        const timeA = a.timestamp;
-        const timeB = b.timestamp;
-        return formatForSorting(timeB) - formatForSorting(timeA);
-      });
-      setNotes(newNotes);
-    } else if (option === "old-to-new") {
-      const newNotes = [...notes].sort((a, b) => {
-        const timeA = a.timestamp;
-        const timeB = b.timestamp;
-        return formatForSorting(timeA) - formatForSorting(timeB);
-      });
-      setNotes(newNotes);
-    }
+    dispatch({ type: "SORT_NOTE", order: order });
   }
 
   function deleteNote(id) {
-    setNotes((prevNotes) =>
-      prevNotes.filter(({ id: noteId }) => noteId !== id)
-    );
+    dispatch({ type: "DELETE_NOTE", id: id });
   }
 
   function updateNote(id, updatedNote) {
-    const newNotes = notes.map((note) => {
-      if (note.id === id && updatedNote) {
-        return { ...note, content: updatedNote };
-      }
-      return note;
-    });
-    setNotes(newNotes);
+    dispatch({ type: "UPDATE_NOTE", id: id, updatedNote: updatedNote });
   }
 
   return (
