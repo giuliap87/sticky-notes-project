@@ -6,10 +6,5 @@ function formatDate(string) {
   return format(parseISO(string), DATE_FORMAT);
 }
 
-
-function formatForSorting(string){
-  return format(parseISO(string), "yyyMMddHHmmSss" )
-}
-
-export { formatDate, formatForSorting };
+export { formatDate };
 
