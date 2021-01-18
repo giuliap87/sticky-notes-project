@@ -13,9 +13,7 @@ export default function noteReducer(state = initialState, action) {
             timestamp: new Date(Date.now()).toISOString(),
             content: action.content,
           },
-        ].sort((a, b) =>
-          b.timestamp < a.timestamp ? -1 : b.timestamp > a.timestamp ? 1 : 0
-        );
+        ].sort((a, b) => (b.timestamp < a.timestamp ? -1 : 0));
       } else if (action.order === "old-to-new") {
         return [
           ...state,
@@ -24,10 +22,7 @@ export default function noteReducer(state = initialState, action) {
             timestamp: new Date(Date.now()).toISOString(),
             content: action.content,
           },
-        ].sort(
-          (a, b) =>
-            a.timestamp < b.timestamp ? -1 : a.timestamp > b.timestamp ? 1 : 0
-        );
+        ].sort((a, b) => (a.timestamp < b.timestamp ? -1 : 0));
       } else {
         return state;
       }
@@ -44,13 +39,9 @@ export default function noteReducer(state = initialState, action) {
       return newNotes;
     case "SORT_NOTE":
       if (action.order === "new-to-old") {
-        return [...state].sort((a, b) =>
-          a.timestamp < b.timestamp ? -1 : a.timestamp > b.timestamp ? 1 : 0
-        );
+        return [...state].sort((a, b) => (a.timestamp < b.timestamp ? -1 : 0));
       } else if (action.order === "old-to-new") {
-        return [...state].sort((a, b) =>
-          b.timestamp < a.timestamp ? -1 : b.timestamp > a.timestamp ? 1 : 0
-        );
+        return [...state].sort((a, b) => (b.timestamp < a.timestamp ? -1 : 0));
       } else {
         return state;
       }
