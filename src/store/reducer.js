@@ -1,27 +1,19 @@
 import { v4 as uuidv4 } from "uuid";
-import { formatForSorting } from "../utils";
 
-const initialState = [
-  // remove this default initial object , I only added it to verify the store works correctly
-  {
-    id: uuidv4(),
-    timestamp: new Date(Date.now()).toISOString(),
-    content: "hi there",
-  },
-];
+const initialState = [];
 
 export default function noteReducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_NOTE":
       if (action.order === "new-to-old") {
         return [
+          ...state,
           {
             id: uuidv4(),
             timestamp: new Date(Date.now()).toISOString(),
             content: action.content,
           },
-          ...state,
-        ];
+        ].sort((a, b) => (b.timestamp < a.timestamp ? -1 : 0));
       } else if (action.order === "old-to-new") {
         return [
           ...state,
@@ -30,7 +22,7 @@ export default function noteReducer(state = initialState, action) {
             timestamp: new Date(Date.now()).toISOString(),
             content: action.content,
           },
-        ];
+        ].sort((a, b) => (a.timestamp < b.timestamp ? -1 : 0));
       } else {
         return state;
       }
@@ -47,19 +39,9 @@ export default function noteReducer(state = initialState, action) {
       return newNotes;
     case "SORT_NOTE":
       if (action.order === "new-to-old") {
-        const newNotes = [...state].sort((a, b) => {
-          const timeA = a.timestamp;
-          const timeB = b.timestamp;
-          return formatForSorting(timeA) - formatForSorting(timeB);
-        });
-        return newNotes;
+        return [...state].sort((a, b) => (a.timestamp < b.timestamp ? -1 : 0));
       } else if (action.order === "old-to-new") {
-        const newNotes = [...state].sort((a, b) => {
-          const timeA = a.timestamp;
-          const timeB = b.timestamp;
-          return formatForSorting(timeB) - formatForSorting(timeA);
-        });
-        return newNotes;
+        return [...state].sort((a, b) => (b.timestamp < a.timestamp ? -1 : 0));
       } else {
         return state;
       }
